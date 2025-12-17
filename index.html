@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Gemini Reel Master</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+      .animate-float {
+        animation: float 3s ease-in-out infinite;
+      }
+      .fish-swim {
+        transition: transform 0.1s linear;
+      }
+      /* Hide scrollbar for game container */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      /* Water Effects */
+      @keyframes wave {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      .animate-wave {
+        animation: wave 10s linear infinite;
+      }
+      .animate-wave-slow {
+        animation: wave 15s linear infinite reverse;
+      }
+
+      @keyframes drift {
+        0% { background-position: 0% 0%; }
+        100% { background-position: 100% 100%; }
+      }
+      .animate-drift {
+        animation: drift 60s linear infinite;
+      }
+      
+      @keyframes ripple-out {
+        0% { transform: scale(0.8); opacity: 0.8; border-width: 2px; }
+        100% { transform: scale(2.5); opacity: 0; border-width: 0px; }
+      }
+      .animate-ripple-out {
+        animation: ripple-out 1s ease-out infinite;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-gray-900 text-white overflow-hidden select-none touch-none">
+    <div id="root"></div>
+  </body>
+</html>
