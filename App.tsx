@@ -35,7 +35,14 @@ const App: React.FC = () => {
   // Persisted State (Lazy init from storage)
   const [score, setScore] = useState<number>(() => loadFromStorage('score', 0));
   const [inventory, setInventory] = useState<Record<string, number>>(() => loadFromStorage('inventory', {}));
-  const [upgradeState, setUpgradeState] = useState<UpgradeState>(() => loadFromStorage('upgradeState', { rodLevel: 0, reelLevel: 0 }));
+  const [upgradeState, setUpgradeState] = useState<UpgradeState>(() => {
+    const saved = loadFromStorage('upgradeState', { rodLevel: 0, reelLevel: 0 });
+    // Safety: Ensure levels are within valid bounds to prevent crashes
+    return {
+      rodLevel: Math.max(0, Math.min(saved.rodLevel || 0, ROD_UPGRADES.length - 1)),
+      reelLevel: Math.max(0, Math.min(saved.reelLevel || 0, REEL_UPGRADES.length - 1))
+    };
+  });
   
   const [showShop, setShowShop] = useState(false);
   const [isAiLoading, setIsAiLoading] = useState(false);
@@ -66,7 +73,8 @@ const App: React.FC = () => {
     if (fishRef.current.length >= 8) return;
 
     // Weighted Random Spawn Logic based on Rod Level
-    const rodEffect = ROD_UPGRADES[upgradeState.rodLevel].effectValue;
+    const currentRodTier = ROD_UPGRADES[upgradeState.rodLevel] || ROD_UPGRADES[0];
+    const rodEffect = currentRodTier.effectValue;
     
     // Calculate total weight
     const weightedTypes = FISH_TYPES.map(fish => {
@@ -169,7 +177,8 @@ const App: React.FC = () => {
         const fishType = FISH_TYPES.find(f => f.id === currentFish.typeId);
         
         if (isReelingRef.current) {
-            const reelMultiplier = REEL_UPGRADES[upgradeState.reelLevel].effectValue;
+            const currentReelTier = REEL_UPGRADES[upgradeState.reelLevel] || REEL_UPGRADES[0];
+            const reelMultiplier = currentReelTier.effectValue;
             const effectivePower = GAME_CONFIG.REEL_POWER * reelMultiplier;
 
             hookRef.current.y -= effectivePower * 0.065 * deltaTime;

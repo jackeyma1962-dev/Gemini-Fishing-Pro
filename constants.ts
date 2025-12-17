@@ -9,11 +9,15 @@ export const FISH_TYPES: FishType[] = [
   { id: 'turtle', name: '長壽海龜', emoji: '🐢', baseValue: 100, speed: 0.25, depth: 0.55, rarity: 'Rare', color: '#22c55e' },
   { id: 'squid', name: '墨水大師', emoji: '🦑', baseValue: 80, speed: 0.9, depth: 0.7, rarity: 'Rare', color: '#f472b6' },
   { id: 'octopus', name: '智者章魚', emoji: '🐙', baseValue: 130, speed: 0.6, depth: 0.8, rarity: 'Rare', color: '#a855f7' },
+  { id: 'anglerfish', name: '深淵燈籠魚', emoji: '🏮', baseValue: 1100, speed: 0.8, depth: 0.93, rarity: 'Legendary', color: '#ea580c' },
   { id: 'shark', name: '大白鯊', emoji: '🦈', baseValue: 200, speed: 1.2, depth: 0.9, rarity: 'Legendary', color: '#94a3b8' },
   { id: 'whale', name: '莫比小鯨', emoji: '🐋', baseValue: 500, speed: 0.2, depth: 0.85, rarity: 'Legendary', color: '#60a5fa' },
   { id: 'dragon', name: '深海蒼龍', emoji: '🐉', baseValue: 1000, speed: 1.5, depth: 0.98, rarity: 'Legendary', color: '#fbbf24' },
   { id: 'nessie', name: '尼斯湖水怪', emoji: '🦕', baseValue: 850, speed: 0.5, depth: 0.92, rarity: 'Legendary', color: '#10b981' },
   { id: 'mermaid', name: '人魚公主', emoji: '🧜‍♀️', baseValue: 2000, speed: 1.8, depth: 0.75, rarity: 'Legendary', color: '#ec4899' },
+  { id: 'mosasaur', name: '遠古滄龍', emoji: '🐊', baseValue: 2200, speed: 1.4, depth: 0.88, rarity: 'Legendary', color: '#15803d' },
+  { id: 'king_lobster', name: '帝王龍蝦', emoji: '🦞', baseValue: 1800, speed: 0.5, depth: 0.94, rarity: 'Legendary', color: '#991b1b' },
+  { id: 'leviathan', name: '利維坦', emoji: '🐍', baseValue: 3000, speed: 1.6, depth: 0.97, rarity: 'Legendary', color: '#312e81' },
 ];
 
 export const GAME_CONFIG = {
